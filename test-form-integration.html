@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Form Integration - FIN GATE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto">
+        <h1 class="text-2xl font-bold mb-6 text-center">Test Contact Form</h1>
+        
+        <!-- Test Form (same structure as footer form) -->
+        <form id="contactForm" class="bg-white rounded-xl p-8 shadow-lg">
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Send us a Message</h3>
+            
+            <div class="grid grid-cols-1 gap-4 mb-4">
+                <input type="text" name="name" placeholder="Your Name" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <input type="email" name="email" placeholder="Your Email" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            
+            <input type="tel" name="phone" placeholder="Your Phone" required 
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-4">
+            
+            <select name="service" required 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-4">
+                <option value="">Select Service</option>
+                <option value="Personal Loan">Personal Loan</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Business Loan">Business Loan</option>
+                <option value="Loan Against Property">Loan Against Property</option>
+                <option value="SME Loans">SME Loans</option>
+                <option value="Project Loans">Project Loans</option>
+                <option value="Car Loans">Car Loans</option>
+                <option value="Unsecured Business Loans">Unsecured Business Loans</option>
+                <option value="Bill Discounting">Bill Discounting</option>
+                <option value="Medical Equipment Loans">Medical Equipment Loans</option>
+                <option value="Machinery Loans">Machinery Loans</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <textarea name="message" placeholder="Your Message" rows="4" 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-6"></textarea>
+            
+            <!-- Submit Button with Loading States -->
+            <button type="submit" id="submitBtn" 
+                    class="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700 transition-all duration-300">
+                <span class="submit-text">Send Message</span>
+                <span class="loading-text hidden">
+                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                    Sending...
+                </span>
+            </button>
+            
+            <!-- Form Message Container -->
+            <div id="formMessage" class="mt-4 text-center"></div>
+        </form>
+        
+        <!-- Instructions -->
+        <div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h4 class="font-semibold text-blue-800 mb-2">Testing Instructions:</h4>
+            <ol class="text-sm text-blue-700 space-y-1">
+                <li>1. Make sure you've set up the Google Apps Script (see GOOGLE_SHEETS_SETUP_GUIDE.md)</li>
+                <li>2. Update the GOOGLE_SCRIPT_URL in contact-form-handler.js</li>
+                <li>3. Fill out this form and submit</li>
+                <li>4. Check your Google Sheet for the new data</li>
+                <li>5. Open browser console (F12) to see detailed logs</li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- Include the form handler -->
+    <script src="./contact-form-handler.js"></script>
+</body>
+</html>
