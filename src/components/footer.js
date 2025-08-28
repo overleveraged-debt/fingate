@@ -80,7 +80,7 @@ function createFooter() {
         <div class="container mx-auto px-6 py-10">
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="mb-6 md:mb-0">
-                    <img src="./public/assets/images/fin-gate-logo.png" alt="FIN GATE Logo" class="h-32 md:h-36 mb-4 transition-all duration-300 hover:scale-105">
+                    <img src="./public/assets/images/fin-gate-logo.webp" alt="FIN GATE Logo" class="h-32 md:h-36 mb-4 transition-all duration-300 hover:scale-105">
                     <p class="text-gray-400">Your trusted partner in financial services. Let us solve your money issues and financial needs.</p>
                 </div>
                 <div>

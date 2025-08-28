@@ -31,7 +31,7 @@ function createHeader(activePage = '') {
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo back in header - sized to be bigger than all text but not massive -->
             <a href="./index.html" class="flex-shrink-0 logo-shine">
-                <img src="./public/assets/images/fin-gate-logo.png" alt="FIN GATE Logo" class="${logoHeight} transition-all duration-300" id="logo-img">
+                <img src="./public/assets/images/fin-gate-logo.webp" alt="FIN GATE Logo" class="${logoHeight} transition-all duration-300" id="logo-img">
             </a>
             <div class="hidden md:flex flex-grow justify-center space-x-8 items-center">
                 <a href="./index.html#about" class="${getNavLinkClass('about')}">About Us</a>

@@ -14,7 +14,7 @@ body {
 .hero-bg {
     background-color: #f8f9fa; /* Fallback background color */
     /* Default mobile background */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/hero-section-bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/hero-section-bg.webp');
     background-size: cover;
     background-position: center center; /* Center the image to show all important parts */
     background-repeat: no-repeat;
@@ -115,7 +115,7 @@ body {
 @media (min-width: 1025px) {
     .hero-bg {
         /* Use desktop-specific image */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/hero bg Desktop.png');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/hero bg Desktop.webp');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
