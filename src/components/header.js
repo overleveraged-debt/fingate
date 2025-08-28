@@ -76,7 +76,7 @@ function createHeader(activePage = '') {
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 ${mobileMenuBg}">
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 ${mobileMenuBg} max-h-screen overflow-y-auto">
             <a href="/index.html#about" class="${getMobileLinkClass('about')}">About Us</a>
 
             <!-- Mobile Services Dropdown -->
@@ -133,7 +133,25 @@ function initMobileMenu() {
 
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
+
+            // Prevent body scrolling when mobile menu is open
+            if (isHidden) {
+                // Menu is being opened
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                document.body.style.top = `-${window.scrollY}px`;
+            } else {
+                // Menu is being closed
+                const scrollY = document.body.style.top;
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
         });
 
         // Mobile services dropdown functionality
@@ -154,6 +172,11 @@ function initMobileMenu() {
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                // Restore body scrolling
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
             });
         });
 
@@ -162,6 +185,11 @@ function initMobileMenu() {
         if (emiButton) {
             emiButton.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                // Restore body scrolling
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
             });
         }
     }
