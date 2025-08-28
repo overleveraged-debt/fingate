@@ -176,3 +176,31 @@ function getScriptUrl() {
   console.log('📎 Current script URL:', url);
   return url;
 }
+
+// the simpler approach 
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSheet();
+    let data = e.parameter.data ? JSON.parse(e.parameter.data) : e.parameter;
+    
+    sheet.appendRow([
+      new Date(),
+      data.name || '',
+      data.email || '',
+      data.phone || '',
+      data.service || '',
+      data.message || '',
+      'New Lead'
+    ]);
+    
+    MailApp.sendEmail({
+      to: 'fingate@gmail.com',
+      subject: 'New FIN GATE Lead',
+      body: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}`
+    });
+    
+    return ContentService.createTextOutput(JSON.stringify({success: true}));
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({success: false}));
+  }
+}

@@ -6,7 +6,7 @@
  */
 
 // Configuration - REPLACE WITH YOUR ACTUAL GOOGLE APPS SCRIPT URL
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7OAUG5xYJA7_Nhuvdc8yBtdQL2jL6QYPtOUnh9Y92jECXj-dBFaJTIOrgCfFQML0VMg/exec';
 
 /**
  * Initialize the contact form handler when DOM is loaded
