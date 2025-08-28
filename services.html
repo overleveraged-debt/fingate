@@ -6,6 +6,19 @@
     <title>Our Services - FIN GATE</title>
     <link rel="icon" type="image/webp" href="./public/assets/images/fin-gate-logo.webp">
     <link rel="shortcut icon" type="image/webp" href="./public/assets/images/fin-gate-logo.webp">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22DZ8R6VLX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-22DZ8R6VLX', {
+            // Only track in production
+            send_page_view: location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'
+        });
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
@@ -323,7 +336,8 @@
     <script src="./src/components/header.js"></script>
     <script src="./src/components/footer.js"></script>
     <script src="./src/components/components.js"></script>
-    <script src="./contact-form-handler.js"></script>
+    <script type="module" src="./src/lib/analytics.js"></script>
+    <script type="module" src="./contact-form-handler.js"></script>
 
     <!-- Privacy Policy Modal -->
     <div id="privacy-policy-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
