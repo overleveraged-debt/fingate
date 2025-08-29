@@ -74,10 +74,16 @@ function initSmoothScrolling() {
 
 // Initialize testimonial swiper
 function initTestimonialSwiper() {
+    // Prevent double initialization
+    if (window.testimonialSwiperInitialized) return;
+
     // Wait a bit for DOM to be fully ready
     setTimeout(() => {
         const testimonialSwiper = document.querySelector('.testimonial-swiper');
         if (testimonialSwiper && typeof Swiper !== 'undefined') {
+            // Mark as initialized to prevent duplicates
+            window.testimonialSwiperInitialized = true;
+
             new Swiper('.testimonial-swiper', {
                 // Basic settings
                 slidesPerView: 1,
@@ -174,6 +180,9 @@ function initTestimonialSwiper() {
         }
     }, 200);
 }
+
+// Make function globally available for conditional loader
+window.initTestimonialSwiper = initTestimonialSwiper;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', loadComponents);

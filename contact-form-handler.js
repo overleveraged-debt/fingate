@@ -1,19 +1,12 @@
 /**
  * Modern Contact Form Handler for FIN GATE
  * Handles form submission to Google Apps Script with proper error handling and user feedback
- * Includes Google Analytics 4 tracking for form interactions
- *
+ * 
  * SETUP: Replace 'YOUR_GOOGLE_APPS_SCRIPT_URL' with your actual Google Apps Script web app URL
  */
 
-// Import analytics functions
-import { trackFormSubmission, event } from './src/lib/analytics.js';
-
 // Configuration - REPLACE WITH YOUR ACTUAL GOOGLE APPS SCRIPT URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7OAUG5xYJA7_Nhuvdc8yBtdQL2jL6QYPtOUnh9Y92jECXj-dBFaJTIOrgCfFQML0VMg/exec';
-
-// Track form interaction timing
-let formStartTime = null;
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
 
 /**
  * Initialize the contact form handler when DOM is loaded
@@ -37,21 +30,10 @@ function initializeContactForm() {
     
     // Add form submission event listener
     contactForm.addEventListener('submit', handleFormSubmission);
-
+    
     // Add real-time validation
     addFormValidation(contactForm);
-
-    // Track form start time when user first interacts
-    const formInputs = contactForm.querySelectorAll('input, select, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            if (!formStartTime) {
-                formStartTime = Date.now();
-                console.log('📊 Form interaction started');
-            }
-        }, { once: true });
-    });
-
+    
     console.log('🚀 Contact form handler initialized successfully');
 }
 
@@ -121,14 +103,8 @@ async function handleFormSubmission(event) {
             showMessage(formMessage, result.message || 'Thank you for your message! We will get back to you soon.', 'success');
             form.reset();
             console.log('✅ Form submitted successfully!');
-
-            // Track successful submission with GA4
-            trackFormSubmission('contact_form', getCurrentPageName(), {
-                service_type: formData.get('service') || 'General',
-                form_completion_time: Date.now() - formStartTime
-            });
-
-            // Track legacy GA event for backward compatibility
+            
+            // Track successful submission (if Google Analytics is available)
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'form_submit', {
                     event_category: 'Contact',
@@ -317,17 +293,6 @@ function clearMessage(messageElement) {
     
     messageElement.textContent = '';
     messageElement.className = 'mt-4 text-center';
-}
-
-/**
- * Get current page name for analytics
- */
-function getCurrentPageName() {
-    const path = window.location.pathname;
-    if (path.includes('services')) return 'services_page';
-    if (path.includes('certificates')) return 'certificates_page';
-    if (path.includes('index') || path === '/') return 'homepage';
-    return 'unknown_page';
 }
 
 /**

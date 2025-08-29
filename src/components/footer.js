@@ -767,13 +767,5 @@ function openEMICalculator() {
         emiModal.classList.remove('hidden');
         // Recalculate when opened
         setTimeout(() => calculateEMI(), 100);
-
-        // Track EMI calculator opening
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'emi_calculator_open', {
-                event_category: 'Tool',
-                event_label: 'EMI Calculator'
-            });
-        }
     }
 }

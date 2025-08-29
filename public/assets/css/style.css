@@ -708,14 +708,17 @@ header.sticky #mobile-menu-button:hover {
 .testimonial-swiper .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.8);
     opacity: 1;
     margin: 0 6px;
     transition: all 0.3s ease;
+    border-radius: 50%;
 }
 
 .testimonial-swiper .swiper-pagination-bullet-active {
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ffffff;
     transform: scale(1.2);
 }
 
